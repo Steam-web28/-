@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -18,8 +19,14 @@
             background: #1a237e;
             color: white;
             text-align: center;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 1rem; /* Ajustar el padding */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header h1 {
+            font-size: 1.5rem; /* Ajustar el tamaño de la fuente */
+            margin: 0; /* Eliminar márgenes */
         }
         .main-container {
             display: flex;
@@ -31,14 +38,16 @@
             margin-left: 50px; /* Margen a la izquierda para centrar el contenido */
         }
         .sidebar {
-            position: sticky;
-            top: 0;
-            width: 400px; /* Aumenta el ancho de la barra lateral */
+            position: fixed;
+            top: 80px; /* Espacio debajo del encabezado */
+            left: -400px; /* Ocultar inicialmente */
+            width: 400px; /* Ancho de la barra lateral */
             background-color: #f8f9fa;
             padding: 20px;
             border-right: 1px solid #dee2e6;
-            height: 100vh;
+            height: calc(100vh - 80px); /* Ajustar altura */
             overflow-y: auto;
+            transition: left 0.3s;
         }
         .sidebar h2 {
             font-size: 1.5rem;
@@ -111,15 +120,28 @@
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+        .toggle-button {
+            background-color: #1a237e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin: 20px;
+            border-radius: 5px;
+        }
+        .toggle-button:hover {
+            background-color: #3949ab;
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <h1>Información sobre el pH</h1>
+        <button class="toggle-button" onclick="toggleSidebar()">Índice</button>
     </header>
 
     <div class="main-container">
-        <nav class="sidebar">
+        <nav class="sidebar" id="sidebar">
             <h2>Índice</h2>
             <ul>
                 <li><a href="#historia">Historia</a></li>
@@ -182,21 +204,22 @@
             </section>
 
             <section id="medicion">
-                <h2>Medición</h2>
-                <p>El pH se puede medir mediante varios métodos, incluyendo el uso de un potenciómetro y papel indicador de pH.</p>
+                <h2>Medición del pH</h2>
+                <p>El pH se puede medir utilizando varios métodos, incluyendo:</p>
+                <ul>
+                    <li>pH-metros: Dispositivos electrónicos que miden la actividad de iones H⁺.</li>
+                    <li>Indicadores de pH: Sustancias que cambian de color según el pH de la solución.</li>
+                </ul>
             </section>
 
             <section id="indicadores">
                 <h2>Indicadores de pH</h2>
-                <p>Los indicadores son sustancias que cambian de color dependiendo del pH de la solución. Por ejemplo, la fenolftaleína es incolora en pH ácido y se torna rosa en pH básico.</p>
-                <div class="image-container">
-                    <img src="indicador.jpg" alt="Indicadores de pH">
-                </div>
+                <p>Los indicadores de pH son compuestos químicos que cambian de color según el pH de la solución. Ejemplos comunes incluyen la fenolftaleína y el tornasol.</p>
             </section>
 
             <section id="soluciones">
                 <h2>Soluciones no acuosas</h2>
-                <p>El concepto de pH también puede aplicarse a soluciones no acuosas, aunque es menos común. En estos casos, se utilizan escalas específicas dependiendo del solvente.</p>
+                <p>El pH también se puede medir en soluciones no acuosas, aunque las técnicas y escalas pueden variar, ya que se utilizan escalas específicas dependiendo del solvente.</p>
             </section>
 
             <section id="escala">
@@ -309,5 +332,20 @@
             </section>
         </main>
     </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.style.left === '0px') {
+                sidebar.style.left = '-400px'; // Ocultar
+            } else {
+                sidebar.style.left = '0px'; // Mostrar
+            }
+        }
+    </script>
+
+    <footer>
+        <p>© 2024 Información sobre el pH. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
