@@ -19,18 +19,14 @@
             background: #1a237e;
             color: white;
             text-align: center;
-            padding: 1rem; /* Encabezado más pequeño */
-            position: relative;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        .toggle-button {
-            background-color: #2980b9;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            position: absolute;
-            right: 20px; /* Posición del botón */
-            top: 10px;
+        .header h1 {
+            font-size: 1.5rem;
+            margin: 0;
         }
         .main-container {
             display: flex;
@@ -39,17 +35,22 @@
             background-color: white;
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
             flex-grow: 1;
+            position: relative;
         }
         .sidebar {
-            position: fixed; /* Mantenerlo fijo */
-            left: -400px; /* Inicialmente oculto */
-            width: 300px;
+            position: fixed;
+            top: 80px; /* Espacio debajo del encabezado */
+            left: -400px; /* Ocultar inicialmente */
+            width: 400px; /* Ancho de la barra lateral */
             background-color: #f8f9fa;
             padding: 20px;
             border-right: 1px solid #dee2e6;
-            height: 100vh;
+            height: calc(100vh - 80px); /* Ajustar altura */
             overflow-y: auto;
-            transition: left 0.3s; /* Suave transición */
+            transition: left 0.3s;
+        }
+        .sidebar.active {
+            left: 0; /* Mostrar el índice */
         }
         .sidebar h2 {
             font-size: 1.5rem;
@@ -91,20 +92,6 @@
             padding-top: 1rem;
             border-top: 1px solid #dee2e6;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: center;
-        }
-        th {
-            background-color: #2980b9;
-            color: white;
-        }
         footer {
             background: #1a237e;
             color: white;
@@ -121,6 +108,18 @@
             height: auto;
             border: 1px solid #ddd;
             border-radius: 4px;
+        }
+        .toggle-button {
+            background-color: #1a237e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin: 20px;
+            border-radius: 5px;
+        }
+        .toggle-button:hover {
+            background-color: #3949ab;
         }
     </style>
 </head>
@@ -194,106 +193,144 @@
             </section>
 
             <section id="medicion">
-                <h2>Medición</h2>
-                <p>El pH se puede medir mediante varios métodos, incluyendo el uso de un potenciómetro y papel indicador de pH.</p>
+                <h2>Medición del pH</h2>
+                <p>El pH se puede medir utilizando varios métodos, incluyendo:</p>
+                <ul>
+                    <li>pH-metros: Dispositivos electrónicos que miden la actividad de iones H⁺.</li>
+                    <li>Indicadores de pH: Sustancias que cambian de color según el pH de la solución.</li>
+                </ul>
             </section>
 
             <section id="indicadores">
                 <h2>Indicadores de pH</h2>
-                <p>Los indicadores son sustancias que cambian de color dependiendo del pH de la solución. Por ejemplo, la fenolftaleína es incolora en pH ácido y rosa en pH básico.</p>
+                <p>Los indicadores de pH son compuestos químicos que cambian de color según el pH de la solución. Ejemplos comunes incluyen la fenolftaleína y el tornasol.</p>
             </section>
 
             <section id="soluciones">
                 <h2>Soluciones no acuosas</h2>
-                <p>El concepto de pH también se aplica a soluciones no acuosas, aunque con algunas limitaciones y consideraciones adicionales.</p>
+                <p>El pH también se puede medir en soluciones no acuosas, aunque las técnicas y escalas pueden variar, ya que se utilizan escalas específicas dependiendo del solvente.</p>
             </section>
 
             <section id="escala">
                 <h2>Escala de pH absoluta unificada</h2>
-                <p>La escala de pH puede ser ajustada para unificar diferentes mediciones en condiciones estándar.</p>
+                <p>La escala de pH puede ser ajustada para representar de manera más precisa la acidez y alcalinidad de soluciones en diferentes contextos, incluyendo condiciones extremas.</p>
             </section>
 
             <section id="extremos">
                 <h2>Extremos de las mediciones de pH</h2>
-                <p>Las mediciones de pH pueden tener limitaciones, especialmente en soluciones extremas.</p>
+                <p>Las mediciones de pH pueden llegar a extremos, con pH inferiores a 0 o superiores a 14 en condiciones específicas, lo que requiere una comprensión de la química subyacente.</p>
             </section>
 
             <section id="aplicaciones">
                 <h2>Aplicaciones</h2>
-                <p>El pH tiene aplicaciones en diversas áreas, incluyendo la agricultura, medicina y tratamiento de aguas.</p>
+                <p>El pH tiene numerosas aplicaciones en diversos campos:</p>
+                <ul>
+                    <li>Industria alimentaria: Control del pH para asegurar la calidad y seguridad de los alimentos.</li>
+                    <li>Medicina: El pH de la sangre es crucial para el diagnóstico de diversas condiciones de salud.</li>
+                    <li>Medio ambiente: El pH del suelo y del agua afecta la vida acuática y la salud del ecosistema.</li>
+                </ul>
+                <div class="image-container">
+                    <img src="aplicacion.jpeg" alt="Aplicaciones del pH">
+                </div>
             </section>
 
             <section id="ph-suelo">
                 <h2>pH en el suelo</h2>
-                <p>El pH del suelo es un factor crítico que influye en la disponibilidad de nutrientes para las plantas.</p>
+                <p>El pH del suelo influye en la disponibilidad de nutrientes para las plantas, afectando su crecimiento y desarrollo.</p>
+                <div class="image-container">
+                    <img src="suelo.jpeg" alt="pH en el suelo">
+                </div>
             </section>
 
             <section id="ph-plantas">
                 <h2>pH en las plantas</h2>
-                <p>El pH del agua que absorben las plantas también afecta su salud y crecimiento.</p>
+                <p>Las plantas tienen rangos óptimos de pH que favorecen la absorción de nutrientes, siendo fundamental para su salud y producción.</p>
+                <div class="image-container">
+                    <img src="plantas.jpeg" alt="pH en las plantas">
+                </div>
             </section>
 
             <section id="ph-oceano">
                 <h2>pH en el océano</h2>
-                <p>El pH del océano está cambiando debido a la absorción de CO₂, lo que afecta a los ecosistemas marinos.</p>
+                <p>El pH del océano afecta la vida marina, siendo un factor crítico en la salud de ecosistemas marinos.</p>
+                <div class="image-container">
+                    <img src="oceano.jpeg" alt="pH en el océano">
+                </div>
             </section>
 
             <section id="escalas-oceanografia">
                 <h2>Tres escalas de pH en oceanografía</h2>
-                <p>En oceanografía, se utilizan tres escalas de pH para medir la acidez del océano: la escala total, la escala libre y la escala de actividad.</p>
+                <p>Existen diferentes escalas de pH utilizadas en oceanografía para evaluar el impacto del cambio climático en los océanos.</p>
             </section>
 
             <section id="ph-alimentos">
                 <h2>pH en los alimentos</h2>
-                <p>El pH es un factor importante en la conservación de alimentos y en la fermentación.</p>
+                <p>El pH de los alimentos puede influir en su sabor, textura y conservación.</p>
             </section>
 
             <section id="ph-fluidos">
                 <h2>pH de varios fluidos corporales</h2>
-                <p>El pH de fluidos como la sangre y la orina es crucial para mantener la homeostasis en el cuerpo.</p>
+                <p>El pH de los fluidos corporales, como la saliva y el jugo gástrico, es vital para la función metabólica y la digestión.</p>
             </section>
 
             <section id="calculos">
                 <h2>Cálculos de pH</h2>
-                <p>El pH puede calcularse utilizando la siguiente fórmula:</p>
-                <p>pH = -log[H⁺]</p>
+                <p>El cálculo del pH se basa en la concentración de iones H⁺. Se utiliza la siguiente fórmula:</p>
+                <p><strong>pH = -log[H⁺]</strong></p>
             </section>
 
             <section id="acidos-bases">
                 <h2>Ácidos y bases fuertes/débiles</h2>
-                <p>La clasificación de los ácidos y bases como fuertes o débiles es esencial para comprender su comportamiento en solución.</p>
+                <p>Los ácidos y bases se clasifican en fuertes y débiles según su grado de disociación en solución:</p>
+                <ul>
+                    <li><strong>Ácidos fuertes:</strong> Se disocian completamente en solución (ejemplo: HCl).</li>
+                    <li><strong>Ácidos débiles:</strong> No se disocian completamente (ejemplo: ácido acético).</li>
+                    <li><strong>Bases fuertes:</strong> Se disocian completamente en solución (ejemplo: NaOH).</li>
+                    <li><strong>Bases débiles:</strong> No se disocian completamente (ejemplo: amoníaco).</li>
+                </ul>
+                <div class="image-container">
+                    <img src="acidos.jpeg" alt="Ácidos y bases">
+                </div>
             </section>
 
             <section id="metodo">
                 <h2>Método general</h2>
-                <p>Para determinar el pH de una solución, se puede utilizar un potenciómetro o papel indicador de pH.</p>
+                <p>El método para determinar el pH incluye el uso de electrodos y la aplicación de fórmulas químicas para calcular el pH en diversas soluciones.</p>
             </section>
 
-            <section id="referencias">
-                <h2>Referencias</h2>
-                <p>Lista de referencias y recursos utilizados para esta información.</p>
+            <section class="reference">
+                <h2 id="referencias">Referencias</h2>
+                <ul>
+                    <li>Brown, T. L., et al. (2023). <em>Chemistry: The Central Science</em> (15th ed.). Pearson.</li>
+                    <li>Chang, R., & Goldsby, K. A. (2024). <em>Chemistry</em> (14th ed.). McGraw-Hill Education.</li>
+                    <li>Petrucci, R. H., et al. (2022). <em>General Chemistry: Principles and Modern Applications</em> (12th ed.).</li>
+                    <li>Zumdahl, S. S., & Zumdahl, S. A. (2023). <em>Chemistry</em> (11th ed.).</li>
+                    <li>Atkins, P., & de Paula, J. (2023). <em>Physical Chemistry</em> (12th ed.).</li>
+                    <li>Enciclopedia Británica. (2022). pH. En <em>Enciclopedia Británica</em>.</li>
+                    <li>Enciclopedia de Ciencias Naturales. (2021). Propiedades del pH. En <em>Enciclopedia de Ciencias Naturales</em>.</li>
+                </ul>
             </section>
 
             <section id="visto-tambien">
                 <h2>Véase también</h2>
-                <p>Otros temas relacionados con el pH y la química.</p>
+                <ul>
+                    <li>Reacciones ácido-base</li>
+                    <li>Buffers</li>
+                    <li>Soluciones acuosas</li>
+                </ul>
             </section>
         </main>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Información sobre el pH</p>
-    </footer>
-
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
-            if (sidebar.style.left === '0px') {
-                sidebar.style.left = '-400px'; // Ocultar
-            } else {
-                sidebar.style.left = '0px'; // Mostrar
-            }
+            sidebar.classList.toggle('active');
         }
     </script>
+
+    <footer>
+        <p>© 2024 Información sobre el pH. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
