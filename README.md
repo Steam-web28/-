@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -23,6 +22,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: opacity 0.3s;
         }
         .header h1 {
             font-size: 1.5rem;
@@ -124,7 +124,7 @@
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="header" id="header">
         <h1>Información sobre el pH</h1>
         <button class="toggle-button" onclick="toggleSidebar()">Índice</button>
     </header>
@@ -133,27 +133,27 @@
         <nav class="sidebar" id="sidebar">
             <h2>Índice</h2>
             <ul>
-                <li><a href="#historia">Historia</a></li>
-                <li><a href="#definicion">Definición</a></li>
-                <li><a href="#ph">pH</a></li>
-                <li><a href="#poh">pOH</a></li>
-                <li><a href="#medicion">Medición</a></li>
-                <li><a href="#indicadores">Indicadores de pH</a></li>
-                <li><a href="#soluciones">Soluciones no acuosas</a></li>
-                <li><a href="#escala">Escala de pH absoluta unificada</a></li>
-                <li><a href="#extremos">Extremos de las mediciones de pH</a></li>
-                <li><a href="#aplicaciones">Aplicaciones</a></li>
-                <li><a href="#ph-suelo">pH en el suelo</a></li>
-                <li><a href="#ph-plantas">pH en las plantas</a></li>
-                <li><a href="#ph-oceano">pH en el océano</a></li>
-                <li><a href="#escalas-oceanografia">Tres escalas de pH en oceanografía</a></li>
-                <li><a href="#ph-alimentos">pH en los alimentos</a></li>
-                <li><a href="#ph-fluidos">pH de varios fluidos corporales</a></li>
-                <li><a href="#calculos">Cálculos de pH</a></li>
-                <li><a href="#acidos-bases">Ácidos y bases fuertes/débiles</a></li>
-                <li><a href="#metodo">Método general</a></li>
-                <li><a href="#referencias">Referencias</a></li>
-                <li><a href="#visto-tambien">Véase también</a></li>
+                <li><a href="#historia" onclick="closeSidebar()">Historia</a></li>
+                <li><a href="#definicion" onclick="closeSidebar()">Definición</a></li>
+                <li><a href="#ph" onclick="closeSidebar()">pH</a></li>
+                <li><a href="#poh" onclick="closeSidebar()">pOH</a></li>
+                <li><a href="#medicion" onclick="closeSidebar()">Medición</a></li>
+                <li><a href="#indicadores" onclick="closeSidebar()">Indicadores de pH</a></li>
+                <li><a href="#soluciones" onclick="closeSidebar()">Soluciones no acuosas</a></li>
+                <li><a href="#escala" onclick="closeSidebar()">Escala de pH absoluta unificada</a></li>
+                <li><a href="#extremos" onclick="closeSidebar()">Extremos de las mediciones de pH</a></li>
+                <li><a href="#aplicaciones" onclick="closeSidebar()">Aplicaciones</a></li>
+                <li><a href="#ph-suelo" onclick="closeSidebar()">pH en el suelo</a></li>
+                <li><a href="#ph-plantas" onclick="closeSidebar()">pH en las plantas</a></li>
+                <li><a href="#ph-oceano" onclick="closeSidebar()">pH en el océano</a></li>
+                <li><a href="#escalas-oceanografia" onclick="closeSidebar()">Tres escalas de pH en oceanografía</a></li>
+                <li><a href="#ph-alimentos" onclick="closeSidebar()">pH en los alimentos</a></li>
+                <li><a href="#ph-fluidos" onclick="closeSidebar()">pH de varios fluidos corporales</a></li>
+                <li><a href="#calculos" onclick="closeSidebar()">Cálculos de pH</a></li>
+                <li><a href="#acidos-bases" onclick="closeSidebar()">Ácidos y bases fuertes/débiles</a></li>
+                <li><a href="#metodo" onclick="closeSidebar()">Método general</a></li>
+                <li><a href="#referencias" onclick="closeSidebar()">Referencias</a></li>
+                <li><a href="#visto-tambien" onclick="closeSidebar()">Véase también</a></li>
             </ul>
         </nav>
 
@@ -193,11 +193,12 @@
             </section>
 
             <section id="medicion">
-                <h2>Medición del pH</h2>
-                <p>El pH se puede medir utilizando varios métodos, incluyendo:</p>
+                <h2>Medición</h2>
+                <p>El pH se puede medir utilizando diversos métodos, incluyendo:</p>
                 <ul>
-                    <li>pH-metros: Dispositivos electrónicos que miden la actividad de iones H⁺.</li>
-                    <li>Indicadores de pH: Sustancias que cambian de color según el pH de la solución.</li>
+                    <li>Electrodos de vidrio: Proporcionan lecturas precisas del pH.</li>
+                    <li>Indicadores de pH: Cambian de color según el pH de la solución.</li>
+                    <li>Papeles tornasol: Permiten estimar el pH mediante un cambio de color.</li>
                 </ul>
             </section>
 
@@ -325,7 +326,16 @@
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
+            const header = document.getElementById('header');
             sidebar.classList.toggle('active');
+            header.style.opacity = sidebar.classList.contains('active') ? '0' : '1';
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const header = document.getElementById('header');
+            sidebar.classList.remove('active');
+            header.style.opacity = '1';
         }
     </script>
 
