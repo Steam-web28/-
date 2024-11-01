@@ -161,8 +161,6 @@
         </nav>
 
         <main class="content-section">
-            <p class="intro">La comprensión de la materia y sus transformaciones constituye uno de los pilares fundamentales de la química moderna. Este estudio examina las clasificaciones esenciales de la materia, profundiza en el comportamiento del agua como solvente universal y analiza los conceptos fundamentales de los sistemas ácido-base.</p>
-
             <section id="historia">
                 <h2>Historia</h2>
                 <p>El concepto de pH fue introducido en 1909 por Søren P. L. Sørensen, un químico danés, para expresar la acidez o alcalinidad de soluciones. Desde entonces, ha sido fundamental en diversas áreas de la química, biología y medicina.</p>
