@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -29,11 +28,12 @@
             background-color: white;
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
             flex-grow: 1;
+            margin-left: 50px; /* Margen a la izquierda para centrar el contenido */
         }
         .sidebar {
             position: sticky;
             top: 0;
-            width: 300px;
+            width: 400px; /* Aumenta el ancho de la barra lateral */
             background-color: #f8f9fa;
             padding: 20px;
             border-right: 1px solid #dee2e6;
